@@ -29,11 +29,26 @@ def check_type(value: Any, definition: Dict[str, Any]) -> bool:
         elif definition['type'] == 'object' and isinstance(value, dict):
 
             for key, prop_def in definition['properties'].items():
-                if key in value and not check_type(value[key], prop_def):
+                if key not in value:
                     return False
+                if not check_type(value[key], prop_def):
+                    return False
+                
+            # Check for extra fields not defined in the schema
+            if len(value) > len(definition['properties']):
+                return False
             return True
         
         return False
+        
+        # elif definition['type'] == 'object' and isinstance(value, dict):
+
+        #     for key, prop_def in definition['properties'].items():
+        #         if key in value or not check_type(value[key], prop_def):
+        #             return False
+        #     return True
+        
+        # return False
 
 
 
