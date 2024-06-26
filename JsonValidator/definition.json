@@ -1,0 +1,41 @@
+[
+    {
+        "name": "store_company_news_summary",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "OUTPUT": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "theme": {
+                                "type": "string",
+                                "description": "theme in news article"
+                            },
+                            "sources": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "description": "id of source"
+                                },
+                                "description": "list id's of sources"
+                            },
+                            "summary": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "description": "paragraph of summary"
+                                },
+                                "description": "detailed summary of theme in 2-3 paragraphs"
+                            }
+                        }
+                    },
+                    "description": "list of theme in news articles"
+                }
+            }
+        },
+        "description": "store summary of news events by theme"
+    }
+]
+
